@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wordle Helper</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <h1><span>Wordle</span> Helper</h1>
+
+    <div class="main">
+        <div class="inputs">
+            <div class="section1">
+                <span>Guesses made: </span>
+                <span class="guessCount countPicked">1</span>
+                <span class="guessCount">2</span>
+                <span class="guessCount">3</span>
+                <span class="guessCount">4</span>
+                <span class="guessCount">5</span>
+            </div>
+            <div class="section2">
+                <div class="guess guess1">
+                    <div class="letter letter1">
+                        <input type="text" maxlength="1">
+                        <div class="colors">
+                            <button class="dropbtn"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span> ▼</button>
+                            <div class="drop-colors">
+                                <div class="color-option green">Green</div>
+                                <div class="color-option yellow">Yellow</div>
+                                <div class="color-option gray">Gray</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="letter letter2">
+                        <input type="text" maxlength="1">
+                        <div class="colors">
+                            <button class="dropbtn"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span> ▼</button>
+                            <div class="drop-colors">
+                                <div class="color-option green">Green</div>
+                                <div class="color-option yellow">Yellow</div>
+                                <div class="color-option gray">Gray</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="letter letter3">
+                        <input type="text" maxlength="1">
+                        <div class="colors">
+                            <button class="dropbtn"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span> ▼</button>
+                            <div class="drop-colors">
+                                <div class="color-option green">Green</div>
+                                <div class="color-option yellow">Yellow</div>
+                                <div class="color-option gray">Gray</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="letter letter4">
+                        <input type="text" maxlength="1">
+                        <div class="colors">
+                            <button class="dropbtn"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span> ▼</button>
+                            <div class="drop-colors">
+                                <div class="color-option green">Green</div>
+                                <div class="color-option yellow">Yellow</div>
+                                <div class="color-option gray">Gray</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="letter letter5">
+                        <input type="text" maxlength="1">
+                        <div class="colors">
+                            <button class="dropbtn"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span> ▼</button>
+                            <div class="drop-colors">
+                                <div class="color-option green">Green</div>
+                                <div class="color-option yellow">Yellow</div>
+                                <div class="color-option gray">Gray</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="guess guess2">
+                    <div class="letter letter1">
+                        <input type="text" maxlength="1">
+                        <div class="colors">
+                            <button class="dropbtn"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span> ▼</button>
+                            <div class="drop-colors">
+                                <div class="color-option green">Green</div>
+                                <div class="color-option yellow">Yellow</div>
+                                <div class="color-option gray">Gray</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="letter letter2">
+                        <input type="text" maxlength="1">
+                        <div class="colors">
+                            <button class="dropbtn"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span> ▼</button>
+                            <div class="drop-colors">
+                                <div class="color-option green">Green</div>
+                                <div class="color-option yellow">Yellow</div>
+                                <div class="color-option gray">Gray</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="letter letter3">
+                        <input type="text" maxlength="1">
+                        <div class="colors">
+                            <button class="dropbtn"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span> ▼</button>
+                            <div class="drop-colors">
+                                <div class="color-option green">Green</div>
+                                <div class="color-option yellow">Yellow</div>
+                                <div class="color-option gray">Gray</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="letter letter4">
+                        <input type="text" maxlength="1">
+                        <div class="colors">
+                            <button class="dropbtn"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span> ▼</button>
+                            <div class="drop-colors">
+                                <div class="color-option green">Green</div>
+                                <div class="color-option yellow">Yellow</div>
+                                <div class="color-option gray">Gray</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="letter letter5">
+                        <input type="text" maxlength="1">
+                        <div class="colors">
+                            <button class="dropbtn"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span> ▼</button>
+                            <div class="drop-colors">
+                                <div class="color-option green">Green</div>
+                                <div class="color-option yellow">Yellow</div>
+                                <div class="color-option gray">Gray</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="guess guess3">
+                    <div class="letter letter1">
+                        <input type="text" maxlength="1">
+                        <div class="colors">
+                            <button class="dropbtn"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span> ▼</button>
+                            <div class="drop-colors">
+                                <div class="color-option green">Green</div>
+                                <div class="color-option yellow">Yellow</div>
+                                <div class="color-option gray">Gray</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="letter letter2">
+                        <input type="text" maxlength="1">
+                        <div class="colors">
+                            <button class="dropbtn"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span> ▼</button>
+                            <div class="drop-colors">
+                                <div class="color-option green">Green</div>
+                                <div class="color-option yellow">Yellow</div>
+                                <div class="color-option gray">Gray</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="letter letter3">
+                        <input type="text" maxlength="1">
+                        <div class="colors">
+                            <button class="dropbtn"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span> ▼</button>
+                            <div class="drop-colors">
+                                <div class="color-option green">Green</div>
+                                <div class="color-option yellow">Yellow</div>
+                                <div class="color-option gray">Gray</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="letter letter4">
+                        <input type="text" maxlength="1">
+                        <div class="colors">
+                            <button class="dropbtn"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span> ▼</button>
+                            <div class="drop-colors">
+                                <div class="color-option green">Green</div>
+                                <div class="color-option yellow">Yellow</div>
+                                <div class="color-option gray">Gray</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="letter letter5">
+                        <input type="text" maxlength="1">
+                        <div class="colors">
+                            <button class="dropbtn"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span> ▼</button>
+                            <div class="drop-colors">
+                                <div class="color-option green">Green</div>
+                                <div class="color-option yellow">Yellow</div>
+                                <div class="color-option gray">Gray</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="guess guess4">
+                    <div class="letter letter1">
+                        <input type="text" maxlength="1">
+                        <div class="colors">
+                            <button class="dropbtn"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span> ▼</button>
+                            <div class="drop-colors">
+                                <div class="color-option green">Green</div>
+                                <div class="color-option yellow">Yellow</div>
+                                <div class="color-option gray">Gray</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="letter letter2">
+                        <input type="text" maxlength="1">
+                        <div class="colors">
+                            <button class="dropbtn"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span> ▼</button>
+                            <div class="drop-colors">
+                                <div class="color-option green">Green</div>
+                                <div class="color-option yellow">Yellow</div>
+                                <div class="color-option gray">Gray</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="letter letter3">
+                        <input type="text" maxlength="1">
+                        <div class="colors">
+                            <button class="dropbtn"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span> ▼</button>
+                            <div class="drop-colors">
+                                <div class="color-option green">Green</div>
+                                <div class="color-option yellow">Yellow</div>
+                                <div class="color-option gray">Gray</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="letter letter4">
+                        <input type="text" maxlength="1">
+                        <div class="colors">
+                            <button class="dropbtn"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span> ▼</button>
+                            <div class="drop-colors">
+                                <div class="color-option green">Green</div>
+                                <div class="color-option yellow">Yellow</div>
+                                <div class="color-option gray">Gray</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="letter letter5">
+                        <input type="text" maxlength="1">
+                        <div class="colors">
+                            <button class="dropbtn"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span> ▼</button>
+                            <div class="drop-colors">
+                                <div class="color-option green">Green</div>
+                                <div class="color-option yellow">Yellow</div>
+                                <div class="color-option gray">Gray</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="guess guess5">
+                    <div class="letter letter1">
+                        <input type="text" maxlength="1">
+                        <div class="colors">
+                            <button class="dropbtn"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span> ▼</button>
+                            <div class="drop-colors">
+                                <div class="color-option green">Green</div>
+                                <div class="color-option yellow">Yellow</div>
+                                <div class="color-option gray">Gray</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="letter letter2">
+                        <input type="text" maxlength="1">
+                        <div class="colors">
+                            <button class="dropbtn"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span> ▼</button>
+                            <div class="drop-colors">
+                                <div class="color-option green">Green</div>
+                                <div class="color-option yellow">Yellow</div>
+                                <div class="color-option gray">Gray</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="letter letter3">
+                        <input type="text" maxlength="1">
+                        <div class="colors">
+                            <button class="dropbtn"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span> ▼</button>
+                            <div class="drop-colors">
+                                <div class="color-option green">Green</div>
+                                <div class="color-option yellow">Yellow</div>
+                                <div class="color-option gray">Gray</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="letter letter4">
+                        <input type="text" maxlength="1">
+                        <div class="colors">
+                            <button class="dropbtn"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span> ▼</button>
+                            <div class="drop-colors">
+                                <div class="color-option green">Green</div>
+                                <div class="color-option yellow">Yellow</div>
+                                <div class="color-option gray">Gray</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="letter letter5">
+                        <input type="text" maxlength="1">
+                        <div class="colors">
+                            <button class="dropbtn"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span> ▼</button>
+                            <div class="drop-colors">
+                                <div class="color-option green">Green</div>
+                                <div class="color-option yellow">Yellow</div>
+                                <div class="color-option gray">Gray</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="guess guess6">
+                    <div class="letter letter1">
+                        <input type="text" maxlength="1">
+                        <div class="colors">
+                            <button class="dropbtn"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span> ▼</button>
+                            <div class="drop-colors">
+                                <div class="color-option green">Green</div>
+                                <div class="color-option yellow">Yellow</div>
+                                <div class="color-option gray">Gray</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="letter letter2">
+                        <input type="text" maxlength="1">
+                        <div class="colors">
+                            <button class="dropbtn"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span> ▼</button>
+                            <div class="drop-colors">
+                                <div class="color-option green">Green</div>
+                                <div class="color-option yellow">Yellow</div>
+                                <div class="color-option gray">Gray</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="letter letter3">
+                        <input type="text" maxlength="1">
+                        <div class="colors">
+                            <button class="dropbtn"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span> ▼</button>
+                            <div class="drop-colors">
+                                <div class="color-option green">Green</div>
+                                <div class="color-option yellow">Yellow</div>
+                                <div class="color-option gray">Gray</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="letter letter4">
+                        <input type="text" maxlength="1">
+                        <div class="colors">
+                            <button class="dropbtn"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span> ▼</button>
+                            <div class="drop-colors">
+                                <div class="color-option green">Green</div>
+                                <div class="color-option yellow">Yellow</div>
+                                <div class="color-option gray">Gray</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="letter letter5">
+                        <input type="text" maxlength="1">
+                        <div class="colors">
+                            <button class="dropbtn"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span> ▼</button>
+                            <div class="drop-colors">
+                                <div class="color-option green">Green</div>
+                                <div class="color-option yellow">Yellow</div>
+                                <div class="color-option gray">Gray</div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
+                <div id="errorMsg"></div>
+                <button id="generate">Show words</button>
+            </div>
+        </div>
+        <div class="results">
+            <div id="displayList"></div>
+        </div>
+    </div>
+
+
+
+    <script src="main.js"></script>
+</body>
+
+</html>
