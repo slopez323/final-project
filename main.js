@@ -40,6 +40,16 @@ function enableGuessRows() {
         $(`.guess${i} input`).val('').removeClass('green yellow gray');
         $(`.guess${i}`).addClass('disabled');
     };
+
+    for (let i = 1; i <= guessCount; i++) {
+        for (let j = 1; j <= 5; j++) {
+            if ($(`.guess${i} .letter${j} input`).val() == '') {
+                $(`.guess${i} .letter${j} input`).focus();
+                i = guessCount + 1;
+                break;
+            };
+        };
+    };
 };
 
 $('.guessCount').on('click', function (e) {

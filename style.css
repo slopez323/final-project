@@ -10,7 +10,7 @@ body {
 }
 
 .section1 {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     font-size: 0.4rem;
     letter-spacing: 0.001rem;
 }
@@ -18,16 +18,23 @@ body {
 .section1,
 .section2{
     display: grid;
-    grid-template-columns: 1fr 1fr 3fr;
+    grid-template-columns: 2fr 3fr;
+
+    column-gap: 20px;
 }
 
 i{
-    grid-column: 2;
     align-self: center;
     margin-left: 15px;
     font-size: .5rem;
 
     position: relative;
+}
+
+.section2 i{
+    align-self: flex-start;
+    margin-top: 25px;
+    margin-left: 10px;
 }
 
 i #sec1-info,
@@ -45,7 +52,7 @@ i #sec2-info{
     position: absolute;
 }
 
-i:hover{
+.step-section>i:hover{
     cursor: help;
 }
 
@@ -60,24 +67,18 @@ i:hover #sec2-info{
     vertical-align: middle;
 }
 
-.section2 i{
-    align-self: flex-start;
-    margin-top: 30px;
-}
-
 .count-section{
     display: flex;
     align-items: center;
 
-    grid-column: 3;
+    grid-column: 2;
 }
 
 .guess-section {
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
 
-    grid-column: 3;
+    grid-column: 2;
 }
 
 .letter,
@@ -91,6 +92,7 @@ i:hover #sec2-info{
     width: 95vw;
     justify-content: center;
     gap: 100px;
+    padding-top: 10px;
 }
 
 header {
@@ -114,12 +116,15 @@ header span{
     transform: rotate(-10deg);
 }
 
+.step-section{
+    grid-column: 1;
+
+    display: flex;
+}
+
 h1{
     font-family: 'Homemade Apple', Helvetica, sans-serif;
-    grid-column: 1;
-    font-size: 0.7rem;
-
-    text-align: right;
+    font-size: 0.6rem;
 }
 
 .guess {
@@ -208,6 +213,7 @@ input.gray {
     height: 1rem;
     font-size: .7rem;
     font-weight: 700;
+    margin: 0 5px;
 }
 
 .guessCount:hover {
@@ -231,7 +237,17 @@ input.gray {
 }
 
 #generate{
-    width: 4rem;
+    border: none;
+    padding: 5px 10px 2px 10px;
+    font-family: 'Homemade Apple', Helvetica, sans-serif;
+    font-size: 0.4rem;
+    border-radius: 3px;
+    box-shadow: 0px 1px 0px 0px rgba(9,30,66,.25);
+}
+
+#generate:hover{
+    cursor: pointer;
+    transform: scale(1.05);
 }
 
 .results{
@@ -266,3 +282,39 @@ li{
     list-style: none;
     font-size: 0.5rem;
 }
+/* 
+.keyboard{
+    font-size: 0.4rem;
+    font-weight: 700;
+}
+
+.kb-row{
+    display: flex;
+    gap: 5px;
+    margin: 5px 0;
+}
+
+.key{
+    width: .9rem;
+    height: 1.2rem;
+    background-color: #d2d8db;
+    border-radius: 3px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.key:hover{
+    cursor: pointer;
+}
+
+#key-ent, #key-back{
+    font-size: .6em;
+    width: fit-content;
+    padding: 0 5px;
+}
+
+#key-back i{
+    margin: 0 5px;
+} */
