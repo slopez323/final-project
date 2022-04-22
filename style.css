@@ -1,5 +1,6 @@
 html {
     font-size: 35px;
+    font-family: Helvetica, sans-serif;
 }
 
 body {
@@ -10,39 +11,122 @@ body {
 
 .section1 {
     margin-bottom: 30px;
+    font-size: 0.4rem;
+    letter-spacing: 0.001rem;
 }
 
-.section2 {
+.section1,
+.section2{
+    display: grid;
+    grid-template-columns: 1fr 1fr 3fr;
+}
+
+i{
+    grid-column: 2;
+    align-self: center;
+    margin-left: 15px;
+    font-size: .5rem;
+
+    position: relative;
+}
+
+i #sec1-info,
+i #sec2-info{
+    display: none;
+    padding: 10px;
+    width: 150px;
+    background-color: white;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    font-family: Helvetica, sans-serif;
+    font-size: .35rem;
+    text-align: center;
+    z-index: 1;
+
+    position: absolute;
+}
+
+i:hover{
+    cursor: help;
+}
+
+i:hover #sec1-info,
+i:hover #sec2-info{
+    display: block;
+}
+
+#colorbtn-img{
+    display: inline-block;
+    height: .3rem;
+    vertical-align: middle;
+}
+
+.section2 i{
+    align-self: flex-start;
+    margin-top: 30px;
+}
+
+.count-section{
+    display: flex;
+    align-items: center;
+
+    grid-column: 3;
+}
+
+.guess-section {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
+
+    grid-column: 3;
 }
 
 .letter,
 .letter>input {
     width: 1.5rem;
-    height: 1.5rem;
-}
-
-.letter,
-.color-select {
-    border: solid gray;
+    height: 1.7rem;
 }
 
 .main {
     display: flex;
-    width: 90vw;
-    justify-content: space-around;
+    width: 95vw;
+    justify-content: center;
+    gap: 100px;
 }
 
-h1 {
+header {
     font-size: 1.5rem;
+    font-family: 'karnakpro-condensed', serif;
+    letter-spacing: 0.05rem;
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+    padding: 0 10vw 5px 0;
+    border-bottom:solid #d2d8db;
+}
+
+header span{
+    font-size: .9rem;
+    font-family: 'Homemade Apple', Helvetica, sans-serif;
+    letter-spacing: 0.01rem;
+    display: inline-block;
+    position: absolute;
+    top: 20px;
+    transform: rotate(-10deg);
+}
+
+h1{
+    font-family: 'Homemade Apple', Helvetica, sans-serif;
+    grid-column: 1;
+    font-size: 0.7rem;
+
+    text-align: right;
 }
 
 .guess {
     display: flex;
+    gap: 8px;
 
-    margin-bottom: 10px;
+    margin-bottom: 18px;
 }
 
 .letter {
@@ -52,74 +136,56 @@ h1 {
 }
 
 .letter>input {
-    font-size: 1rem;
+    font-size: .8rem;
+    font-weight: 700;
     text-transform: uppercase;
     text-align: center;
-    padding: 0;
+    padding: 8px 0 6px 0;
 
-    border: none;
+    border: solid #d2d8db;
     outline: none;
-}
-
-.colors {
-    position: relative;
-    display: inline-block;
-
-    margin-top: -20px;
 }
 
 .color-select {
     background-color: gainsboro;
     color: black;
     font-size: .3rem;
-    border-top: none;
+    border: solid gainsboro;
     cursor: pointer;
     text-transform: uppercase;
     width: calc(1.5rem + 3px);
+
+    height: .6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .color-select:hover {
-    background-color: darkgray;
+    background-color: white;
+    border: solid white;
 }
 
-.drop-colors {
-    display: none;
-    position: absolute;
-    width: calc(1.5rem + 3px);
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    text-align: center;
-}
-
-.color-option {
-    font-size: .35rem;
-    padding: 2px 0;
-    display: block;
-    text-transform: uppercase;
-}
-
-.color-option:hover {
-    color: black;
-    cursor: pointer;
-}
-
-.green {
+input.green {
     background-color: #6baa64;
+    border: solid #6baa64;
     color: white;
 }
 
-.yellow {
+input.yellow {
     background-color: #c8b458;
+    border: solid #c8b458;
     color: white;
 }
 
-.gray {
+input.gray {
     background-color: #787c7e;
+    border: solid #787c7e;
     color: white;
 }
 
 .round {
-    font-size: .4rem;
+    font-size: .5rem;
 }
 
 .round1 {
@@ -134,10 +200,6 @@ h1 {
     color: #787c7e;
 }
 
-.showDrop {
-    display: block;
-}
-
 .guessCount {
     display: inline-flex;
     justify-content: center;
@@ -145,6 +207,7 @@ h1 {
     width: 1rem;
     height: 1rem;
     font-size: .7rem;
+    font-weight: 700;
 }
 
 .guessCount:hover {
@@ -152,7 +215,7 @@ h1 {
 }
 
 .countPicked {
-    background-color: darkorange;
+    background-color: black;
     color: white;
     border-radius: 50%;
 }
@@ -164,11 +227,23 @@ h1 {
 .disabled .color-select:hover {
     cursor: auto;
     background-color: gainsboro;
+    border: solid gainsboro;
+}
+
+#generate{
+    width: 4rem;
+}
+
+.results{
+    display: flex;
+    align-items: center;
+
+    padding-right: 20px;
 }
 
 #displayList {
     width: 30vw;
-    height: 60vh;
+    height: 65vh;
     background-color: rgba(220, 220, 220, 0.543);
     text-transform: uppercase;
     overflow-y: scroll;
@@ -178,6 +253,7 @@ h1 {
 ::-webkit-scrollbar {
     -webkit-appearance: none;
     width: 7px;
+    height: 0;
 }
 
 ::-webkit-scrollbar-thumb {

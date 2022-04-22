@@ -7,217 +7,235 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wordle Helper</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylesheet.css">
     <link rel="stylesheet" href="style.css">
+
+    <script src="https://kit.fontawesome.com/b1efd90343.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
-    <h1><span>Wordle</span> Helper</h1>
+    <header>Wordle&nbsp;<span>Helper</span></header>
 
     <div class="main">
         <div class="inputs">
             <div class="section1">
-                <span>Guesses made: </span>
-                <span class="guessCount countPicked">1</span>
-                <span class="guessCount">2</span>
-                <span class="guessCount">3</span>
-                <span class="guessCount">4</span>
-                <span class="guessCount">5</span>
+                <h1>Step 1</h1>
+                <i class="fa fa-regular fa-circle-question"><div id="sec1-info">
+                    Choose how many guesses you've made so far.  Since you only get up to 6 tries on Wordle, you can only use this helper until after your 5th try.
+                </div></i>
+                <div class="count-section">
+                    <span>Guesses made &nbsp;</span>
+                    <span class="guessCount countPicked">1</span>
+                    <span class="guessCount">2</span>
+                    <span class="guessCount">3</span>
+                    <span class="guessCount">4</span>
+                    <span class="guessCount">5</span>
+                </div>
             </div>
             <div class="section2">
-                <div class="guess guess1">
-                    <div class="letter letter1">
-                        <input type="text" maxlength="1">
-                        <div class="colors">
-                            <button class="color-select"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span></button>
-                            
+                <h1>Step 2</h1>
+                <i class="fa fa-regular fa-circle-question"><div id="sec2-info">
+                    Input the words you've guessed and change the color of each box by clicking the <img src="colorbtn.png" alt="color button" id="colorbtn-img"> button to reflect the resulting colors on Wordle. 
+                </div></i>
+                <div class="guess-section">
+                    <div class="guess guess1">
+                        <div class="letter letter1">
+                            <input type="text" maxlength="1" onkeydown="return (event.which >= 65 && event.which <= 90) || event.which == 8">
+                            <div class="colors">
+                                <button class="color-select"><span class="round round1">●</span><span
+                                        class="round round2">●</span><span class="round round3">●</span></button>
+                            </div>
+                        </div>
+                        <div class="letter letter2">
+                            <input type="text" maxlength="1" onkeydown="return (event.which >= 65 && event.which <= 90) || event.which == 8">
+                            <div class="colors">
+                                <button class="color-select"><span class="round round1">●</span><span
+                                        class="round round2">●</span><span class="round round3">●</span></button>
+                            </div>
+                        </div>
+                        <div class="letter letter3">
+                            <input type="text" maxlength="1" onkeydown="return (event.which >= 65 && event.which <= 90) || event.which == 8">
+                            <div class="colors">
+                                <button class="color-select"><span class="round round1">●</span><span
+                                        class="round round2">●</span><span class="round round3">●</span></button>
+                            </div>
+                        </div>
+                        <div class="letter letter4">
+                            <input type="text" maxlength="1" onkeydown="return (event.which >= 65 && event.which <= 90) || event.which == 8">
+                            <div class="colors">
+                                <button class="color-select"><span class="round round1">●</span><span
+                                        class="round round2">●</span><span class="round round3">●</span></button>
+                            </div>
+                        </div>
+                        <div class="letter letter5">
+                            <input type="text" maxlength="1" onkeydown="return (event.which >= 65 && event.which <= 90) || event.which == 8">
+                            <div class="colors">
+                                <button class="color-select"><span class="round round1">●</span><span
+                                        class="round round2">●</span><span class="round round3">●</span></button>
+                            </div>
                         </div>
                     </div>
-                    <div class="letter letter2">
-                        <input type="text" maxlength="1">
-                        <div class="colors">
-                            <button class="color-select"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span></button>
-                            
+                    <div class="guess guess2">
+                        <div class="letter letter1">
+                            <input type="text" maxlength="1" onkeydown="return (event.which >= 65 && event.which <= 90) || event.which == 8">
+                            <div class="colors">
+                                <button class="color-select"><span class="round round1">●</span><span
+                                        class="round round2">●</span><span class="round round3">●</span></button>
+                            </div>
+                        </div>
+                        <div class="letter letter2">
+                            <input type="text" maxlength="1" onkeydown="return (event.which >= 65 && event.which <= 90) || event.which == 8">
+                            <div class="colors">
+                                <button class="color-select"><span class="round round1">●</span><span
+                                        class="round round2">●</span><span class="round round3">●</span></button>
+                            </div>
+                        </div>
+                        <div class="letter letter3">
+                            <input type="text" maxlength="1" onkeydown="return (event.which >= 65 && event.which <= 90) || event.which == 8">
+                            <div class="colors">
+                                <button class="color-select"><span class="round round1">●</span><span
+                                        class="round round2">●</span><span class="round round3">●</span></button>
+                            </div>
+                        </div>
+                        <div class="letter letter4">
+                            <input type="text" maxlength="1" onkeydown="return (event.which >= 65 && event.which <= 90) || event.which == 8">
+                            <div class="colors">
+                                <button class="color-select"><span class="round round1">●</span><span
+                                        class="round round2">●</span><span class="round round3">●</span></button>
+                            </div>
+                        </div>
+                        <div class="letter letter5">
+                            <input type="text" maxlength="1" onkeydown="return (event.which >= 65 && event.which <= 90) || event.which == 8">
+                            <div class="colors">
+                                <button class="color-select"><span class="round round1">●</span><span
+                                        class="round round2">●</span><span class="round round3">●</span></button>
+                            </div>
                         </div>
                     </div>
-                    <div class="letter letter3">
-                        <input type="text" maxlength="1">
-                        <div class="colors">
-                            <button class="color-select"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span></button>
-                            
+                    <div class="guess guess3">
+                        <div class="letter letter1">
+                            <input type="text" maxlength="1" onkeydown="return (event.which >= 65 && event.which <= 90) || event.which == 8">
+                            <div class="colors">
+                                <button class="color-select"><span class="round round1">●</span><span
+                                        class="round round2">●</span><span class="round round3">●</span></button>
+                            </div>
+                        </div>
+                        <div class="letter letter2">
+                            <input type="text" maxlength="1" onkeydown="return (event.which >= 65 && event.which <= 90) || event.which == 8">
+                            <div class="colors">
+                                <button class="color-select"><span class="round round1">●</span><span
+                                        class="round round2">●</span><span class="round round3">●</span></button>
+                            </div>
+                        </div>
+                        <div class="letter letter3">
+                            <input type="text" maxlength="1" onkeydown="return (event.which >= 65 && event.which <= 90) || event.which == 8">
+                            <div class="colors">
+                                <button class="color-select"><span class="round round1">●</span><span
+                                        class="round round2">●</span><span class="round round3">●</span></button>
+                            </div>
+                        </div>
+                        <div class="letter letter4">
+                            <input type="text" maxlength="1" onkeydown="return (event.which >= 65 && event.which <= 90) || event.which == 8">
+                            <div class="colors">
+                                <button class="color-select"><span class="round round1">●</span><span
+                                        class="round round2">●</span><span class="round round3">●</span></button>
+                            </div>
+                        </div>
+                        <div class="letter letter5">
+                            <input type="text" maxlength="1" onkeydown="return (event.which >= 65 && event.which <= 90) || event.which == 8">
+                            <div class="colors">
+                                <button class="color-select"><span class="round round1">●</span><span
+                                        class="round round2">●</span><span class="round round3">●</span></button>
+                            </div>
                         </div>
                     </div>
-                    <div class="letter letter4">
-                        <input type="text" maxlength="1">
-                        <div class="colors">
-                            <button class="color-select"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span></button>
-                            
+                    <div class="guess guess4">
+                        <div class="letter letter1">
+                            <input type="text" maxlength="1" onkeydown="return (event.which >= 65 && event.which <= 90) || event.which == 8">
+                            <div class="colors">
+                                <button class="color-select"><span class="round round1">●</span><span
+                                        class="round round2">●</span><span class="round round3">●</span></button>
+                            </div>
+                        </div>
+                        <div class="letter letter2">
+                            <input type="text" maxlength="1" onkeydown="return (event.which >= 65 && event.which <= 90) || event.which == 8">
+                            <div class="colors">
+                                <button class="color-select"><span class="round round1">●</span><span
+                                        class="round round2">●</span><span class="round round3">●</span></button>
+                            </div>
+                        </div>
+                        <div class="letter letter3">
+                            <input type="text" maxlength="1" onkeydown="return (event.which >= 65 && event.which <= 90) || event.which == 8">
+                            <div class="colors">
+                                <button class="color-select"><span class="round round1">●</span><span
+                                        class="round round2">●</span><span class="round round3">●</span></button>
+                            </div>
+                        </div>
+                        <div class="letter letter4">
+                            <input type="text" maxlength="1" onkeydown="return (event.which >= 65 && event.which <= 90) || event.which == 8">
+                            <div class="colors">
+                                <button class="color-select"><span class="round round1">●</span><span
+                                        class="round round2">●</span><span class="round round3">●</span></button>
+                            </div>
+                        </div>
+                        <div class="letter letter5">
+                            <input type="text" maxlength="1" onkeydown="return (event.which >= 65 && event.which <= 90) || event.which == 8">
+                            <div class="colors">
+                                <button class="color-select"><span class="round round1">●</span><span
+                                        class="round round2">●</span><span class="round round3">●</span></button>
+                            </div>
                         </div>
                     </div>
-                    <div class="letter letter5">
-                        <input type="text" maxlength="1">
-                        <div class="colors">
-                            <button class="color-select"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span></button>
-                            
+                    <div class="guess guess5">
+                        <div class="letter letter1">
+                            <input type="text" maxlength="1" onkeydown="return (event.which >= 65 && event.which <= 90) || event.which == 8">
+                            <div class="colors">
+                                <button class="color-select"><span class="round round1">●</span><span
+                                        class="round round2">●</span><span class="round round3">●</span></button>
+                            </div>
+                        </div>
+                        <div class="letter letter2">
+                            <input type="text" maxlength="1" onkeydown="return (event.which >= 65 && event.which <= 90) || event.which == 8">
+                            <div class="colors">
+                                <button class="color-select"><span class="round round1">●</span><span
+                                        class="round round2">●</span><span class="round round3">●</span></button>
+                            </div>
+                        </div>
+                        <div class="letter letter3">
+                            <input type="text" maxlength="1" onkeydown="return (event.which >= 65 && event.which <= 90) || event.which == 8">
+                            <div class="colors">
+                                <button class="color-select"><span class="round round1">●</span><span
+                                        class="round round2">●</span><span class="round round3">●</span></button>
+                            </div>
+                        </div>
+                        <div class="letter letter4">
+                            <input type="text" maxlength="1" onkeydown="return (event.which >= 65 && event.which <= 90) || event.which == 8">
+                            <div class="colors">
+                                <button class="color-select"><span class="round round1">●</span><span
+                                        class="round round2">●</span><span class="round round3">●</span></button>
+                            </div>
+                        </div>
+                        <div class="letter letter5">
+                            <input type="text" maxlength="1" onkeydown="return (event.which >= 65 && event.which <= 90) || event.which == 8">
+                            <div class="colors">
+                                <button class="color-select"><span class="round round1">●</span><span
+                                        class="round round2">●</span><span class="round round3">●</span></button>
+                            </div>
                         </div>
                     </div>
+                    <div id="errorMsg"></div>
+                    <button id="generate">Show words</button>
                 </div>
-
-                <div class="guess guess2">
-                    <div class="letter letter1">
-                        <input type="text" maxlength="1">
-                        <div class="colors">
-                            <button class="color-select"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span></button>
-                            
-                        </div>
-                    </div>
-                    <div class="letter letter2">
-                        <input type="text" maxlength="1">
-                        <div class="colors">
-                            <button class="color-select"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span></button>
-                            
-                        </div>
-                    </div>
-                    <div class="letter letter3">
-                        <input type="text" maxlength="1">
-                        <div class="colors">
-                            <button class="color-select"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span></button>
-                            
-                        </div>
-                    </div>
-                    <div class="letter letter4">
-                        <input type="text" maxlength="1">
-                        <div class="colors">
-                            <button class="color-select"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span></button>
-                            
-                        </div>
-                    </div>
-                    <div class="letter letter5">
-                        <input type="text" maxlength="1">
-                        <div class="colors">
-                            <button class="color-select"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span></button>
-                            
-                        </div>
-                    </div>
-                </div>
-
-                <div class="guess guess3">
-                    <div class="letter letter1">
-                        <input type="text" maxlength="1">
-                        <div class="colors">
-                            <button class="color-select"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span></button>
-                            
-                        </div>
-                    </div>
-                    <div class="letter letter2">
-                        <input type="text" maxlength="1">
-                        <div class="colors">
-                            <button class="color-select"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span></button>
-                            
-                        </div>
-                    </div>
-                    <div class="letter letter3">
-                        <input type="text" maxlength="1">
-                        <div class="colors">
-                            <button class="color-select"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span></button>
-                            
-                        </div>
-                    </div>
-                    <div class="letter letter4">
-                        <input type="text" maxlength="1">
-                        <div class="colors">
-                            <button class="color-select"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span></button>
-                            
-                        </div>
-                    </div>
-                    <div class="letter letter5">
-                        <input type="text" maxlength="1">
-                        <div class="colors">
-                            <button class="color-select"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span></button>
-                            
-                        </div>
-                    </div>
-                </div>
-
-                <div class="guess guess4">
-                    <div class="letter letter1">
-                        <input type="text" maxlength="1">
-                        <div class="colors">
-                            <button class="color-select"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span></button>
-                            
-                        </div>
-                    </div>
-                    <div class="letter letter2">
-                        <input type="text" maxlength="1">
-                        <div class="colors">
-                            <button class="color-select"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span></button>
-                            
-                        </div>
-                    </div>
-                    <div class="letter letter3">
-                        <input type="text" maxlength="1">
-                        <div class="colors">
-                            <button class="color-select"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span></button>
-                            
-                        </div>
-                    </div>
-                    <div class="letter letter4">
-                        <input type="text" maxlength="1">
-                        <div class="colors">
-                            <button class="color-select"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span></button>
-                            
-                        </div>
-                    </div>
-                    <div class="letter letter5">
-                        <input type="text" maxlength="1">
-                        <div class="colors">
-                            <button class="color-select"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span></button>
-                            
-                        </div>
-                    </div>
-                </div>
-
-                <div class="guess guess5">
-                    <div class="letter letter1">
-                        <input type="text" maxlength="1">
-                        <div class="colors">
-                            <button class="color-select"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span></button>
-                            
-                        </div>
-                    </div>
-                    <div class="letter letter2">
-                        <input type="text" maxlength="1">
-                        <div class="colors">
-                            <button class="color-select"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span></button>
-                            
-                        </div>
-                    </div>
-                    <div class="letter letter3">
-                        <input type="text" maxlength="1">
-                        <div class="colors">
-                            <button class="color-select"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span></button>
-                            
-                        </div>
-                    </div>
-                    <div class="letter letter4">
-                        <input type="text" maxlength="1">
-                        <div class="colors">
-                            <button class="color-select"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span></button>
-                            
-                        </div>
-                    </div>
-                    <div class="letter letter5">
-                        <input type="text" maxlength="1">
-                        <div class="colors">
-                            <button class="color-select"><span class="round round1">●</span><span class="round round2">●</span><span class="round round3">●</span></button>
-                            
-                        </div>
-                    </div>
-                </div>
-
-                <div id="errorMsg"></div>
-                <button id="generate">Show words</button>
             </div>
+
+            <div class="keyboard">
+
+            </div>
+
         </div>
         <div class="results">
             <div id="displayList"></div>

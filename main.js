@@ -121,3 +121,35 @@ function checkInputs() {
         };
     };
 };
+
+$(window).on('keyup', function (e) {
+    let parentLetter = $(e.target).closest('.letter');
+    let parentGuess = $(e.target).closest('.guess');
+    if (e.which >= 65 && e.which <= 90) {
+        if (parentLetter[0].nextElementSibling) {
+            let nextLetter = parentLetter[0].nextElementSibling;
+            $(nextLetter).children('input').focus().select();
+        } else {
+            let nextGuess = parentGuess[0].nextElementSibling;
+            if ($(nextGuess).hasClass('guess') && !$(nextGuess).hasClass('disabled')) {
+                $(nextGuess).find('.letter1 input').focus().select();
+            };
+        };
+    } else if (e.which == 8) {
+        if (parentLetter[0].previousElementSibling) {
+            let prevLetter = parentLetter[0].previousElementSibling;
+            $(prevLetter).children('input').focus().select();
+        } else {
+            if (parentGuess[0].previousElementSibling) {
+                let prevGuess = parentGuess[0].previousElementSibling;
+                if ($(prevGuess).hasClass('guess')) {
+                    $(prevGuess).find('.letter5 input').focus().select();
+                };
+            };
+        };
+    };
+});
+
+$('input').on('click', function () {
+    $(this).select();
+});
