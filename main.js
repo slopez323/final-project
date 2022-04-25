@@ -101,7 +101,7 @@ function checkInputs() {
             if ($(letter).hasClass('green')) {
                 let position = $(letter).closest('.letter');
                 position = position[0].classList[1];
-                if (greenArr.some(item => item.position == position && item.letter != letter.textContent)) {
+                if (greenArr.some(item => item.position == position && item.letter != letter.textContent.toLowerCase())) {
                     $('#errorMsg').text('Conflicting green boxes.');
                     $('#errorMsg').show();
                     return;
