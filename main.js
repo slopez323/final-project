@@ -44,7 +44,7 @@ function enableGuessRows() {
     for (let i = 1; i <= guessCount; i++) {
         for (let j = 1; j <= 5; j++) {
             if ($(`.guess${i} .letter${j} input`).val() == '') {
-                $(`.guess${i} .letter${j} input`).focus();
+                $(`.guess${i} .letter${j} input`).focus().addClass('currentBox');
                 i = guessCount + 1;
                 break;
             };
@@ -59,6 +59,7 @@ $('.guessCount').on('click', function (e) {
 });
 
 $('.color-select').on('click', function (e) {
+    $('#errorMsg').hide();
     if (!$(e.target).closest('.guess').hasClass('disabled')) {
         let guess = $(e.target).closest('.guess');
         guess = guess[0].classList[1];
@@ -78,18 +79,7 @@ $('.color-select').on('click', function (e) {
     };
 });
 
-$('#generate').on('click', function () {
-    greenArr = [];
-    yellowArr = [];
-    grayArr = [];
-    $('#errorMsg').text('');
-    $('#displayList').empty();
-
-    checkInputs();
-    if ($('#errorMsg').text() == '') {
-        getWords();
-    };
-});
+$('#generate').on('click', generateWords);
 
 function checkInputs() {
     let guessCount = Number($('.countPicked').text());
@@ -97,18 +87,18 @@ function checkInputs() {
         let word = $(`.guess${i} input`)
         for (letter of word) {
             if (letter.value == '') {
-                $('#errorMsg').text('Missing inputs.');
+                $('#errorMsg').text('Fill in all guessed words.');
                 return;
             };
             if (!$(letter).hasClass('green') && !$(letter).hasClass('yellow') && !$(letter).hasClass('gray')) {
-                $('#errorMsg').text('Missing inputs.');
+                $('#errorMsg').text('All guess boxes must be colored.');
                 return;
             };
             if ($(letter).hasClass('green')) {
                 let position = $(letter).closest('.letter');
                 position = position[0].classList[1];
                 if (greenArr.some(item => item.position == position && item.letter != letter.value)) {
-                    $('#errorMsg').text('Check conflicting inputs.');
+                    $('#errorMsg').text('Conflicting green boxes.');
                     return;
                 } else if (greenArr.some(item => item.position == position)) {
                     return;
@@ -136,30 +126,80 @@ $(window).on('keyup', function (e) {
     let parentLetter = $(e.target).closest('.letter');
     let parentGuess = $(e.target).closest('.guess');
     if (e.which >= 65 && e.which <= 90) {
-        if (parentLetter[0].nextElementSibling) {
-            let nextLetter = parentLetter[0].nextElementSibling;
-            $(nextLetter).children('input').focus().select();
-        } else {
-            let nextGuess = parentGuess[0].nextElementSibling;
-            if ($(nextGuess).hasClass('guess') && !$(nextGuess).hasClass('disabled')) {
-                $(nextGuess).find('.letter1 input').focus().select();
-            };
-        };
+        nextBox(parentLetter, parentGuess);
     } else if (e.which == 8) {
-        if (parentLetter[0].previousElementSibling) {
-            let prevLetter = parentLetter[0].previousElementSibling;
-            $(prevLetter).children('input').focus().select();
-        } else {
-            if (parentGuess[0].previousElementSibling) {
-                let prevGuess = parentGuess[0].previousElementSibling;
-                if ($(prevGuess).hasClass('guess')) {
-                    $(prevGuess).find('.letter5 input').focus().select();
-                };
-            };
-        };
+        prevBox(parentLetter, parentGuess);
     };
+
+    $(e.target).removeClass('currentBox');
 });
 
 $('input').on('click', function () {
-    $(this).select();
+    $('#errorMsg').text('');
+    $('input').removeClass('currentBox');
+    $(this).select().addClass('currentBox');
 });
+
+if (window.matchMedia("(pointer: coarse)").matches) {
+    $('.keyboard').removeClass('hideKey');
+    $('#generate').hide();
+    $('input').attr('readonly', 'readonly');
+};
+
+$('.key').on('click', function (e) {
+    let parentLetter = $('.currentBox').closest('.letter');
+    let parentGuess = $('.currentBox').closest('.guess');
+    console.log(e.target)
+
+    if (!$(e.target).is('#key-ent') && !$(e.target).is('#key-back') && !$(e.target).is('i')) {
+        $('.currentBox').val(`${$(e.target).text()}`);
+        $('input').removeClass('currentBox');
+        nextBox(parentLetter, parentGuess);
+    } else if ($(e.target).is('i') || $(e.target).is('#key-back')) {
+        if ($('.currentBox').val() != '') $('.currentBox').val('');
+        $('input').removeClass('currentBox');
+        prevBox(parentLetter, parentGuess);
+    } else {
+        generateWords();
+    };
+});
+
+function nextBox(parentLetter, parentGuess) {
+    if (parentLetter[0].nextElementSibling) {
+        let nextLetter = parentLetter[0].nextElementSibling;
+        $(nextLetter).children('input').focus().select().addClass('currentBox');
+    } else {
+        let nextGuess = parentGuess[0].nextElementSibling;
+        if ($(nextGuess).hasClass('guess') && !$(nextGuess).hasClass('disabled')) {
+            $(nextGuess).find('.letter1 input').focus().select().addClass('currentBox');
+        };
+    };
+};
+
+function prevBox(parentLetter, parentGuess) {
+    if (parentLetter[0].previousElementSibling) {
+        let prevLetter = parentLetter[0].previousElementSibling;
+        $(prevLetter).children('input').focus().select().addClass('currentBox');
+    } else {
+        if (parentGuess[0].previousElementSibling) {
+            let prevGuess = parentGuess[0].previousElementSibling;
+            if ($(prevGuess).hasClass('guess')) {
+                $(prevGuess).find('.letter5 input').focus().select().addClass('currentBox');
+            };
+        };
+    };
+};
+
+function generateWords() {
+    greenArr = [];
+    yellowArr = [];
+    grayArr = [];
+    $('#errorMsg').text('');
+    $('#displayList').empty();
+
+    checkInputs();
+    if ($('#errorMsg').text() == '') {
+        $(window).scrollTop('1000');
+        getWords();
+    };
+};
