@@ -39,11 +39,13 @@ function enableGuessRows() {
     for (let i = guessCount + 1; i <= 6; i++) {
         $(`.guess${i} .input`).text('').removeClass('green yellow gray');
         $(`.guess${i}`).addClass('disabled');
+        $('.input').removeClass('currentBox');
     };
 
     for (let i = 1; i <= guessCount; i++) {
         for (let j = 1; j <= 5; j++) {
             if ($(`.guess${i} .letter${j} .input`).text() == '') {
+                $('.input').removeClass('currentBox');
                 $(`.guess${i} .letter${j} .input`).addClass('currentBox');
                 i = guessCount + 1;
                 break;

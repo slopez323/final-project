@@ -95,7 +95,6 @@ header {
     width: 100%;
     text-align: center;
     margin-top: 0;
-    padding: 0 12vw 5px 0;
     border-bottom: solid #d2d8db;
 }
 
@@ -104,8 +103,8 @@ header span {
     font-family: 'Homemade Apple', Helvetica, sans-serif;
     letter-spacing: 0.01rem;
     display: inline-block;
-    position: absolute;
-    top: 8px;
+    position: relative;
+    top: -10px;
     transform: rotate(-10deg);
 }
 
