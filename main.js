@@ -26,6 +26,8 @@ async function getWords() {
         wordArr = wordArr.filter(word => !word.includes(item))
     };
     $('#displayList').append(wordArr.map(word => `<li>${word}</li>`).join(''));
+    $('.results').show();
+    $(window).scrollTop('1000');
 };
 
 enableGuessRows();
@@ -88,10 +90,12 @@ function checkInputs() {
         for (letter of word) {
             if (letter.value == '') {
                 $('#errorMsg').text('Fill in all guessed words.');
+                $('#errorMsg').show();
                 return;
             };
             if (!$(letter).hasClass('green') && !$(letter).hasClass('yellow') && !$(letter).hasClass('gray')) {
                 $('#errorMsg').text('All guess boxes must be colored.');
+                $('#errorMsg').show();
                 return;
             };
             if ($(letter).hasClass('green')) {
@@ -99,6 +103,7 @@ function checkInputs() {
                 position = position[0].classList[1];
                 if (greenArr.some(item => item.position == position && item.letter != letter.value)) {
                     $('#errorMsg').text('Conflicting green boxes.');
+                    $('#errorMsg').show();
                     return;
                 } else if (greenArr.some(item => item.position == position)) {
                     return;
@@ -136,6 +141,7 @@ $(window).on('keyup', function (e) {
 
 $('input').on('click', function () {
     $('#errorMsg').text('');
+    $('#errorMsg').hide();
     $('input').removeClass('currentBox');
     $(this).select().addClass('currentBox');
 });
@@ -143,6 +149,7 @@ $('input').on('click', function () {
 if (window.matchMedia("(pointer: coarse)").matches) {
     $('.keyboard').removeClass('hideKey');
     $('#generate').hide();
+    $('.results').hide();
     $('input').attr('readonly', 'readonly');
 };
 
@@ -195,11 +202,11 @@ function generateWords() {
     yellowArr = [];
     grayArr = [];
     $('#errorMsg').text('');
+    $('#errorMsg').hide();
     $('#displayList').empty();
 
     checkInputs();
     if ($('#errorMsg').text() == '') {
-        $(window).scrollTop('1000');
         getWords();
     };
 };

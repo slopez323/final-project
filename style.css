@@ -304,6 +304,7 @@ li {
     flex-direction: column;
     align-items: center;
     margin-top: 10px;
+    max-width: 100vw;
 }
 
 .hideKey {
