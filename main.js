@@ -114,7 +114,7 @@ function checkInputs() {
             if ($(letter).hasClass('yellow')) {
                 let position = $(letter).closest('.letter');
                 position = position[0].classList[1];
-                if (yellowArr.some(item => item.position == position && item.letter == letter.textContent)) {
+                if (yellowArr.some(item => item.position == position && item.letter == letter.textContent.toLowerCase())) {
                     return;
                 } else {
                     yellowArr.push({ 'letter': letter.textContent.toLowerCase(), position });
