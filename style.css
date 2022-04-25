@@ -67,22 +67,11 @@ i:hover #sec2-info {
 .count-section {
     display: flex;
     align-items: center;
-
-    /* grid-column: 2; */
 }
 
 .guess-section {
     display: flex;
     flex-direction: column;
-
-    /* grid-column: 2; */
-}
-
-.letter,
-.letter>input {
-    width: 1.5rem;
-    height: 1.7rem;
-    border-radius: 0;
 }
 
 .main {
@@ -133,7 +122,7 @@ h1 {
     display: flex;
     gap: 8px;
 
-    margin-bottom: 18px;
+    margin-bottom: 0.2rem;
 }
 
 .letter {
@@ -142,7 +131,11 @@ h1 {
     align-items: center;
 }
 
-.letter>input {
+.letter>.input {
+    width: 1.5rem;
+    height: 0.9rem;
+    border-radius: 0;
+
     font-size: .8rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -150,13 +143,9 @@ h1 {
     padding: 8px 0 6px 0;
 
     border: 1px solid #d2d8db;
-    outline: none;
-    caret-color: transparent;
 }
 
-.letter>input:focus {
-    border-color: black;
-}
+
 
 .color-select {
     background-color: gainsboro;
@@ -178,22 +167,26 @@ h1 {
     border-color: white;
 }
 
-input.green {
+.input.green {
     background-color: #6baa64;
     border-color:#6baa64;
     color: white;
 }
 
-input.yellow {
+.input.yellow {
     background-color: #c8b458;
     border-color:#c8b458;
     color: white;
 }
 
-input.gray {
+.input.gray {
     background-color: #787c7e;
     border-color:#787c7e;
     color: white;
+}
+
+.letter>.currentBox {
+    border: 2px solid black;
 }
 
 .round {
