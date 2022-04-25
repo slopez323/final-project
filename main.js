@@ -33,12 +33,10 @@ async function getWords() {
 enableGuessRows();
 
 function enableGuessRows() {
-    // $(`.guess input`).attr('disabled', false);
     $('.guess').removeClass('disabled');
 
     let guessCount = Number($('.countPicked').text());
     for (let i = guessCount + 1; i <= 6; i++) {
-        // $(`.guess${i} input`).attr('disabled', 'disabled');
         $(`.guess${i} .input`).text('').removeClass('green yellow gray');
         $(`.guess${i}`).addClass('disabled');
     };
@@ -46,7 +44,6 @@ function enableGuessRows() {
     for (let i = 1; i <= guessCount; i++) {
         for (let j = 1; j <= 5; j++) {
             if ($(`.guess${i} .letter${j} .input`).text() == '') {
-                // $(`.guess${i} .letter${j} input`).focus().addClass('currentBox');
                 $(`.guess${i} .letter${j} .input`).addClass('currentBox');
                 i = guessCount + 1;
                 break;
@@ -89,7 +86,7 @@ function checkInputs() {
     for (let i = 1; i <= guessCount; i++) {
         let word = $(`.guess${i} .input`)
         for (letter of word) {
-            if (letter.value == '') {
+            if (letter.textContent == '') {
                 $('#errorMsg').text('Fill in all guessed words.');
                 $('#errorMsg').show();
                 return;
@@ -102,27 +99,27 @@ function checkInputs() {
             if ($(letter).hasClass('green')) {
                 let position = $(letter).closest('.letter');
                 position = position[0].classList[1];
-                if (greenArr.some(item => item.position == position && item.letter != letter.value)) {
+                if (greenArr.some(item => item.position == position && item.letter != letter.textContent)) {
                     $('#errorMsg').text('Conflicting green boxes.');
                     $('#errorMsg').show();
                     return;
                 } else if (greenArr.some(item => item.position == position)) {
                     return;
                 } else {
-                    greenArr.push({ 'letter': letter.value.toLowerCase(), position });
+                    greenArr.push({ 'letter': letter.textContent.toLowerCase(), position });
                 };
             };
             if ($(letter).hasClass('yellow')) {
                 let position = $(letter).closest('.letter');
                 position = position[0].classList[1];
-                if (yellowArr.some(item => item.position == position && item.letter == letter.value)) {
+                if (yellowArr.some(item => item.position == position && item.letter == letter.textContent)) {
                     return;
                 } else {
-                    yellowArr.push({ 'letter': letter.value.toLowerCase(), position });
+                    yellowArr.push({ 'letter': letter.textContent.toLowerCase(), position });
                 };
             };
             if ($(letter).hasClass('gray')) {
-                grayArr.push(letter.value.toLowerCase());
+                grayArr.push(letter.textContent.toLowerCase());
             };
         };
     };
@@ -138,8 +135,6 @@ $(window).on('keyup', function (e) {
         $('.currentBox').text('');
         prevBox();
     };
-
-    // $(e.target).removeClass('currentBox');
 });
 
 $('.input').on('click', function (e) {
@@ -155,17 +150,14 @@ if (window.matchMedia("(pointer: coarse)").matches) {
     $('.keyboard').removeClass('hideKey');
     $('#generate').hide();
     $('.results').hide();
-    // $('input').attr('readonly', 'readonly');
 };
 
 $('.key').on('click', function (e) {
     if (!$(e.target).is('#key-ent') && !$(e.target).is('#key-back') && !$(e.target).is('i')) {
         $('.currentBox').text(`${$(e.target).text()}`);
-        // $('.input').removeClass('currentBox');
         nextBox();
     } else if ($(e.target).is('i') || $(e.target).is('#key-back')) {
         if ($('.currentBox').text() != '') $('.currentBox').text('');
-        // $('.input').removeClass('currentBox');
         prevBox();
     } else {
         generateWords();
@@ -175,16 +167,17 @@ $('.key').on('click', function (e) {
 function nextBox() {
     let parentLetter = $('.currentBox').closest('.letter');
     let parentGuess = $('.currentBox').closest('.guess');
-    console.log($('.currentBox'));
-
-    $('.input').removeClass('currentBox');
 
     if (parentLetter[0].nextElementSibling) {
         let nextLetter = parentLetter[0].nextElementSibling;
+        $('.input').removeClass('currentBox');
+
         $(nextLetter).children('.input').addClass('currentBox');
     } else {
         let nextGuess = parentGuess[0].nextElementSibling;
         if ($(nextGuess).hasClass('guess') && !$(nextGuess).hasClass('disabled')) {
+            $('.input').removeClass('currentBox');
+
             $(nextGuess).find('.letter1 .input').addClass('currentBox');
         };
     };
@@ -194,15 +187,17 @@ function prevBox() {
     let parentLetter = $('.currentBox').closest('.letter');
     let parentGuess = $('.currentBox').closest('.guess');
 
-    $('.input').removeClass('currentBox');
-
     if (parentLetter[0].previousElementSibling) {
         let prevLetter = parentLetter[0].previousElementSibling;
+        $('.input').removeClass('currentBox');
+
         $(prevLetter).children('.input').addClass('currentBox');
     } else {
         if (parentGuess[0].previousElementSibling) {
             let prevGuess = parentGuess[0].previousElementSibling;
             if ($(prevGuess).hasClass('guess')) {
+                $('.input').removeClass('currentBox');
+
                 $(prevGuess).find('.letter5 .input').addClass('currentBox');
             };
         };

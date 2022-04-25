@@ -79,6 +79,7 @@ i:hover #sec2-info {
     width: 30rem;
     max-width: calc(100vw - 20px);
     justify-content: center;
+    align-items: center;
     gap: 10%;
     padding-top: 10px;
 }
