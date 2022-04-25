@@ -15,6 +15,7 @@ async function getWords() {
 
         wordArr = wordArr.filter(word => word.substring(position - 1, position) == item.letter);
     };
+    console.log(yellowArr)
     for (item of yellowArr) {
         let position = item.position;
         position = Number(position.substring(position.length - 1));
@@ -87,6 +88,7 @@ function checkInputs() {
     let guessCount = Number($('.countPicked').text());
     for (let i = 1; i <= guessCount; i++) {
         let word = $(`.guess${i} .input`)
+        console.log(word)
         for (letter of word) {
             if (letter.textContent == '') {
                 $('#errorMsg').text('Fill in all guessed words.');
@@ -106,7 +108,7 @@ function checkInputs() {
                     $('#errorMsg').show();
                     return;
                 } else if (greenArr.some(item => item.position == position)) {
-                    return;
+                    continue;
                 } else {
                     greenArr.push({ 'letter': letter.textContent.toLowerCase(), position });
                 };
@@ -114,8 +116,9 @@ function checkInputs() {
             if ($(letter).hasClass('yellow')) {
                 let position = $(letter).closest('.letter');
                 position = position[0].classList[1];
+                console.log(position)
                 if (yellowArr.some(item => item.position == position && item.letter == letter.textContent.toLowerCase())) {
-                    return;
+                    continue;
                 } else {
                     yellowArr.push({ 'letter': letter.textContent.toLowerCase(), position });
                 };
