@@ -131,7 +131,7 @@ function checkInputs() {
 };
 
 $(window).on('keyup', function (e) {
-    
+
 
     if (e.which >= 65 && e.which <= 90) {
         $('.currentBox').text(e.key);
@@ -158,6 +158,9 @@ if (window.matchMedia("(pointer: coarse)").matches) {
 };
 
 $('.key').on('click', function (e) {
+    $('#errorMsg').text('');
+    $('#errorMsg').hide();
+    
     if (!$(e.target).is('#key-ent') && !$(e.target).is('#key-back') && !$(e.target).is('i')) {
         $('.currentBox').text(`${$(e.target).text()}`);
         nextBox();
