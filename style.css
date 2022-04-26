@@ -179,11 +179,6 @@ i:hover #sec2-info {
     align-items: center;
 }
 
-.color-select:hover {
-    background-color: white;
-    border-color: white;
-}
-
 .input.green {
     background-color: #6baa64;
     border-color: #6baa64;
@@ -226,12 +221,6 @@ i:hover #sec2-info {
     opacity: 0.3;
 }
 
-.disabled .color-select:hover {
-    cursor: auto;
-    background-color: gainsboro;
-    border-color: gainsboro;
-}
-
 #generate {
     border: none;
     padding: 5px 10px 2px 10px;
@@ -239,7 +228,7 @@ i:hover #sec2-info {
     font-size: 0.4rem;
     border-radius: 3px;
     box-shadow: 0px 1px 0px 0px rgba(9, 30, 66, .25);
-    background-color:darksalmon;
+    background-color: darksalmon;
 }
 
 #generate:hover {
@@ -281,10 +270,10 @@ i:hover #sec2-info {
     transition: visibility 0s ease-in-out 300ms, opacity 300ms;
 }
 
-#errorMsg.show{
+#errorMsg.show {
     opacity: .8;
     visibility: visible;
-    transition: visibility 0s ease-in-out 0s,opacity 300ms;
+    transition: visibility 0s ease-in-out 0s, opacity 300ms;
 }
 
 ::-webkit-scrollbar {
@@ -342,7 +331,7 @@ li {
     padding: 0 5px;
 }
 
-#key-ent{
+#key-ent {
     background-color: darksalmon;
     font-size: .9em;
 }
@@ -351,7 +340,7 @@ li {
     margin: 0 5px;
 }
 
-li:nth-child(even){
+li:nth-child(even) {
     background-color: white;
 }
 
@@ -397,6 +386,19 @@ li:nth-child(even){
     .results {
         margin-top: 50px;
         height: 100vh;
+    }
+}
+
+@media (hover:hover) {
+    .color-select:hover {
+        background-color: white;
+        border-color: white;
+    }
+
+    .disabled .color-select:hover {
+        cursor: auto;
+        background-color: gainsboro;
+        border-color: gainsboro;
     }
 }
 
