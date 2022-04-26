@@ -283,7 +283,7 @@ i:hover #sec2-info {
 #errorMsg.show{
     opacity: .8;
     visibility: visible;
-    transition: opacity 300ms;
+    transition: visibility 0s linear 300ms,opacity 300ms;
     z-index: 1;
 }
 
