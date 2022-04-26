@@ -27,7 +27,7 @@ async function getWords() {
         wordArr = wordArr.filter(word => !word.includes(item))
     };
     $('#displayList').append(wordArr.map(word => `<li>${word}</li>`).join(''));
-    $('.results').show();
+    $('.results').removeClass('hide');
     $(window).scrollTop('1000');
 };
 
@@ -152,7 +152,7 @@ $('.input').on('click', function (e) {
 });
 
 if (window.matchMedia("(pointer: coarse)").matches) {
-    $('.keyboard').removeClass('hideKey');
+    $('.keyboard').removeClass('hide');
     $('#generate').hide();
     $('.results').hide();
 };
@@ -160,7 +160,7 @@ if (window.matchMedia("(pointer: coarse)").matches) {
 $('.key').on('click', function (e) {
     $('#errorMsg').text('');
     $('#errorMsg').hide();
-    
+
     if (!$(e.target).is('#key-ent') && !$(e.target).is('#key-back') && !$(e.target).is('i')) {
         $('.currentBox').text(`${$(e.target).text()}`);
         nextBox();
