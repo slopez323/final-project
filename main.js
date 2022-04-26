@@ -43,8 +43,6 @@ function enableGuessRows() {
 // if user clicks on an input box, switch focus to that box
 $('.input').on('click', function (e) {
     if (!$(e.target).closest('.guess').hasClass('disabled')) {
-        $('#errorMsg').text('');
-        $('#errorMsg').hide();
         $('.input').removeClass('currentBox');
         $(this).addClass('currentBox');
     };
@@ -52,9 +50,6 @@ $('.input').on('click', function (e) {
 
 // fill boxes with letters user pressed on keyboard (using <span> instead of <input>)
 $(window).on('keyup', function (e) {
-    $('#errorMsg').text('');
-    $('#errorMsg').hide();
-
     if (e.which >= 65 && e.which <= 90) {
         $('.currentBox').text(e.key);
         nextBox();
@@ -66,9 +61,6 @@ $(window).on('keyup', function (e) {
 
 // fill boxes with letters user pressed on virtual keyboard
 $('.key').on('click', function (e) {
-    $('#errorMsg').text('');
-    $('#errorMsg').hide();
-
     if (!$(e.target).is('#key-ent') && !$(e.target).is('#key-back') && !$(e.target).is('i')) {
         $('.currentBox').text(`${$(e.target).text()}`);
         nextBox();
@@ -82,7 +74,6 @@ $('.key').on('click', function (e) {
 
 // switch between gray, green and yellow when clicking on color button for each letter box
 $('.color-select').on('click', function (e) {
-    $('#errorMsg').hide();
     if (!$(e.target).closest('.guess').hasClass('disabled')) {
         let guess = $(e.target).closest('.guess');
         guess = guess[0].classList[1];
@@ -153,7 +144,6 @@ function generateWords() {
     yellowArr = [];
     grayArr = [];
     $('#errorMsg').text('');
-    $('#errorMsg').hide();
     $('#displayList').empty();
 
     checkInputs();
@@ -169,13 +159,17 @@ function checkInputs() {
         let word = $(`.guess${i} .input`)
         for (letter of word) {
             if (letter.textContent == '') {
-                $('#errorMsg').text('Fill in all guessed words.');
-                $('#errorMsg').show();
+                $('#errorMsg').text('Missing letters.');
+                $('#errorMsg').addClass('show');
+                setTimeout(function(){
+                    $('#errorMsg').removeClass('show')}, 800);
                 return;
             };
             if (!$(letter).hasClass('green') && !$(letter).hasClass('yellow') && !$(letter).hasClass('gray')) {
-                $('#errorMsg').text('All guess boxes must be colored.');
-                $('#errorMsg').show();
+                $('#errorMsg').text('Missing colors.');
+                $('#errorMsg').addClass('show');
+                setTimeout(function(){
+                    $('#errorMsg').removeClass('show')}, 800);
                 return;
             };
             if ($(letter).hasClass('green')) {
@@ -183,7 +177,9 @@ function checkInputs() {
                 position = position[0].classList[1];
                 if (greenArr.some(item => item.position == position && item.letter != letter.textContent.toLowerCase())) {
                     $('#errorMsg').text('Conflicting green boxes.');
-                    $('#errorMsg').show();
+                    $('#errorMsg').addClass('show');
+                setTimeout(function(){
+                    $('#errorMsg').removeClass('show')}, 800);
                     return;
                 } else if (greenArr.some(item => item.position == position)) {
                     continue;

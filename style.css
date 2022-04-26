@@ -45,6 +45,8 @@ header span {
 
 .inputs {
     padding: 0 50px;
+
+    position: relative;
 }
 
 .section1 {
@@ -261,10 +263,28 @@ i:hover #sec2-info {
 }
 
 #errorMsg {
-    color: indianred;
-    font-size: .4rem;
+    color: white;
+    font-size: .6rem;
     font-weight: 700;
     text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: indianred;
+    padding: 5px 10px;
+    border-radius: 5px;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility 0s linear 300ms, opacity 300ms;
+}
+
+#errorMsg.show{
+    opacity: .8;
+    visibility: visible;
+    transition: opacity 300ms;
+    z-index: 1;
 }
 
 ::-webkit-scrollbar {
