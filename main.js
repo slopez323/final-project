@@ -161,15 +161,17 @@ function checkInputs() {
             if (letter.textContent == '') {
                 $('#errorMsg').text('Missing letters.');
                 $('#errorMsg').addClass('show');
-                setTimeout(function(){
-                    $('#errorMsg').removeClass('show')}, 800);
+                setTimeout(function () {
+                    $('#errorMsg').removeClass('show')
+                }, 800);
                 return;
             };
             if (!$(letter).hasClass('green') && !$(letter).hasClass('yellow') && !$(letter).hasClass('gray')) {
                 $('#errorMsg').text('Missing colors.');
                 $('#errorMsg').addClass('show');
-                setTimeout(function(){
-                    $('#errorMsg').removeClass('show')}, 800);
+                setTimeout(function () {
+                    $('#errorMsg').removeClass('show')
+                }, 800);
                 return;
             };
             if ($(letter).hasClass('green')) {
@@ -178,8 +180,9 @@ function checkInputs() {
                 if (greenArr.some(item => item.position == position && item.letter != letter.textContent.toLowerCase())) {
                     $('#errorMsg').text('Conflicting green boxes.');
                     $('#errorMsg').addClass('show');
-                setTimeout(function(){
-                    $('#errorMsg').removeClass('show')}, 800);
+                    setTimeout(function () {
+                        $('#errorMsg').removeClass('show')
+                    }, 800);
                     return;
                 } else if (greenArr.some(item => item.position == position)) {
                     continue;
@@ -197,7 +200,9 @@ function checkInputs() {
                 };
             };
             if ($(letter).hasClass('gray')) {
-                grayArr.push(letter.textContent.toLowerCase());
+                let position = $(letter).closest('.letter');
+                position = position[0].classList[1];
+                grayArr.push({ 'letter': letter.textContent.toLowerCase(), position });
             };
         };
     };
@@ -225,7 +230,15 @@ async function getWords() {
         wordArr = wordArr.filter(word => word.includes(item.letter));
     };
     for (item of grayArr) {
-        wordArr = wordArr.filter(word => !word.includes(item))
+        let position = item.position;
+        position = Number(position.substring(position.length - 1));
+        let greenLetters = greenArr.map(x => x.letter);
+
+        if (greenLetters.includes(item.letter)) {
+            wordArr = wordArr.filter(word => word.substring(position - 1, position) != item.letter);
+        } else {
+            wordArr = wordArr.filter(word => !word.includes(item.letter))
+        };
     };
     $('#displayList').append(wordArr.map(word => `<li>${word}</li>`).join(''));
     $('.results').removeClass('hide');
