@@ -16,7 +16,8 @@ body {
 header {
     font-size: 1.5rem;
     font-family: 'karnakpro-condensed', serif;
-    letter-spacing: 0.05rem;
+    letter-spacing: 0.02rem;
+    transform: scale(1,0.8);
     width: 100%;
     text-align: center;
     margin-top: 0;
@@ -24,13 +25,13 @@ header {
 }
 
 header span {
-    font-size: .8rem;
+    font-size: .7rem;
     font-family: 'Homemade Apple', Helvetica, sans-serif;
     letter-spacing: 0.01rem;
     display: inline-block;
     position: relative;
-    top: -10px;
-    transform: rotate(-10deg);
+    top: -14px;
+    transform: scale(1,1.25) rotate(-10deg);
 }
 
 .main {
