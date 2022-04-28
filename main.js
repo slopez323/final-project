@@ -23,7 +23,7 @@ function enableGuessRows() {
     $('.guess').removeClass('disabled');
 
     let guessCount = Number($('.countPicked').text());
-    for (let i = guessCount + 1; i <= 6; i++) {
+    for (let i = guessCount + 1; i <= 5; i++) {
         $(`.guess${i} .input`).text('').removeClass('green yellow gray');
         $(`.guess${i}`).addClass('disabled');
         $('.input').removeClass('currentBox');
