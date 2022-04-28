@@ -244,3 +244,20 @@ async function getWords() {
     $('.results').removeClass('hide');
     $(window).scrollTop('1000');
 };
+
+// for mobile / portrait version to go back to top / guess view from results
+$('.up').on('click', function(){
+    $(window).scrollTop('0');
+});
+
+
+// hide instructions that show up on startup when exit or area outside popup is clicked
+$('.exit').on('click', function(){
+    $('.instructions').hide();
+});
+
+$('.instructions').on('click', function(e){
+    if($(e.target).closest('.popup').length === 0){
+        $('.instructions').hide();
+    };
+});

@@ -17,7 +17,7 @@ header {
     font-size: 1.5rem;
     font-family: 'karnakpro-condensed', serif;
     letter-spacing: 0.02rem;
-    transform: scale(1,0.8);
+    transform: scale(1, 0.8);
     width: 100%;
     text-align: center;
     margin-top: 0;
@@ -31,7 +31,7 @@ header span {
     display: inline-block;
     position: relative;
     top: -14px;
-    transform: scale(1,1.25) rotate(-10deg);
+    transform: scale(1, 1.25) rotate(-10deg);
 }
 
 .main {
@@ -252,6 +252,14 @@ i:hover #sec2-info {
     text-align: center;
 }
 
+.results h1 {
+    position: relative;
+}
+
+.up {
+    display: none;
+}
+
 #errorMsg {
     color: white;
     font-size: .6rem;
@@ -292,7 +300,11 @@ i:hover #sec2-info {
 li {
     list-style: none;
     font-size: 0.5rem;
-    line-height: 0.7rem;
+    line-height: 1rem;
+}
+
+li:nth-child(even) {
+    background-color: white;
 }
 
 .keyboard {
@@ -341,8 +353,65 @@ li {
     margin: 0 5px;
 }
 
-li:nth-child(even) {
+.instructions{
+    background-color: rgba(220, 220, 220, 0.724);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.popup{
+    font-size: 0.5rem;
+    font-weight: 700;
+    width: 500px;
+    max-width: 80vw;
+    height: 500px;
+    max-height: 60vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
     background-color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h2{
+    margin: 0;
+    font-family: 'Homemade Apple', Helvetica, sans-serif;
+}
+
+.exit{
+    color: black;
+    position: absolute;
+    top: 5px;
+    right: 15px;
+}
+
+.exit:hover{
+    cursor: pointer;
+}
+
+img{
+    width: 60%;
+    height: auto;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border-radius: 3px;
+}
+
+.submit-int{
+    background-color: darksalmon;
+    display: inline-block;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 
 @media (max-width:980px) {
@@ -387,6 +456,20 @@ li:nth-child(even) {
     .results {
         margin-top: 50px;
         height: 100vh;
+    }
+
+    .up {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        width: 25px;
+        height: 25px;
+        font-size: .6rem;
+        color: #787c7e;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     }
 }
 
