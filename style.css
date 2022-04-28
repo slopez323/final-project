@@ -95,7 +95,8 @@ i #sec3-info {
     position: absolute;
 }
 
-.step-section>i:hover {
+.step-section>i:hover, 
+.results i:hover {
     cursor: help;
 }
 
