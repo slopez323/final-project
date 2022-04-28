@@ -367,8 +367,7 @@ li:nth-child(even) {
     font-weight: 700;
     width: 500px;
     max-width: 80vw;
-    height: 500px;
-    max-height: 60vh;
+    height: max-content;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -389,10 +388,10 @@ h2{
 }
 
 .exit{
-    color: black;
+    color: gray;
     position: absolute;
     top: 5px;
-    right: 15px;
+    right: 10px;
 }
 
 .exit:hover{
