@@ -9,7 +9,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Caveat+Brush&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Caveat+Brush&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="stylesheet.css">
     <link rel="stylesheet" href="style.css">
 
@@ -238,7 +239,7 @@
                             </div>
                         </div>
                     </div>
-            
+
                     <button id="generate">SUBMIT</button>
                 </div>
             </div>
@@ -283,7 +284,15 @@
         </div>
 
         <div class="results hide">
-            <h1>Possible words :<div class="up">⇧</div></h1>
+            <h1>Possible words :<i class="fa fa-regular fa-circle-question">
+                    <div id="sec3-info">
+                        If you'd like to add your next guess from the list below, simply click on it and the next guess
+                        will be filled in with that word.
+                    </div>
+                </i>
+                <div class="up">⇧</div>
+            </h1>
+
             <div id="displayList"></div>
         </div>
     </div>
@@ -296,7 +305,7 @@
             <img src="guessnum-gif.gif"><br>
             <p>Copy the guessed words and resulting colors from Wordle onto all enabled rows.</p>
             <img src="words-gif.gif"><br>
-            <p>Click on <span class="submit-int">SUBMIT</span> to display all remaining possible words.</p>
+            <p>Click <span class="submit-int">SUBMIT</span> to display all remaining possible words.</p>
         </div>
     </div>
 

@@ -1,6 +1,7 @@
 let grayArr = [];
 let greenArr = [];
 let yellowArr = [];
+let submitted = false;
 
 // show custom virtual keyboard if using mobile / touchscreen
 if (window.matchMedia("(pointer: coarse)").matches) {
@@ -233,8 +234,9 @@ async function getWords() {
         let position = item.position;
         position = Number(position.substring(position.length - 1));
         let greenLetters = greenArr.map(x => x.letter);
+        let yellowLetters = yellowArr.map(x => x.letter);
 
-        if (greenLetters.includes(item.letter)) {
+        if (greenLetters.includes(item.letter) || yellowLetters.includes(item.letter)) {
             wordArr = wordArr.filter(word => word.substring(position - 1, position) != item.letter);
         } else {
             wordArr = wordArr.filter(word => !word.includes(item.letter))
@@ -243,21 +245,41 @@ async function getWords() {
     $('#displayList').append(wordArr.map(word => `<li>${word}</li>`).join(''));
     $('.results').removeClass('hide');
     $(window).scrollTop('1000');
+
+    submitted = true;
 };
 
 // for mobile / portrait version to go back to top / guess view from results
-$('.up').on('click', function(){
+$('.up').on('click', function () {
     $(window).scrollTop('0');
 });
 
 
 // hide instructions that show up on startup when exit or area outside popup is clicked
-$('.exit').on('click', function(){
+$('.exit').on('click', function () {
     $('.instructions').hide();
 });
 
-$('.instructions').on('click', function(e){
-    if($(e.target).closest('.popup').length === 0){
+$('.instructions').on('click', function (e) {
+    if ($(e.target).closest('.popup').length === 0) {
         $('.instructions').hide();
     };
+});
+
+// allows user to pick from list generated to fill in the next guessed word
+$('#displayList').on('click', 'li', function (e) {
+    let guessCount = Number($('.countPicked').text())
+    if (submitted == true) {
+        if (guessCount == 5) return;
+        guessCount++;
+        $('.guessCount').removeClass('countPicked');
+        $(`.guessCount:nth-child(${guessCount})`).addClass('countPicked');
+        enableGuessRows();
+    };
+    $(window).scrollTop('0');
+    let chosenWord = $(e.target).text();
+    for (let i = 1; i <= 5; i++) {
+        $(`.guess${guessCount} .letter${i} .input`).text(`${chosenWord.substring(i - 1, i)}`);
+    };
+    submitted = false;
 });

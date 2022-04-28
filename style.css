@@ -72,14 +72,16 @@ i {
     font-size: .6rem;
 }
 
-.section2 i {
+.section2 i, 
+.results i {
     align-self: flex-start;
     margin-top: .45rem;
     margin-left: 10px;
 }
 
 i #sec1-info,
-i #sec2-info {
+i #sec2-info,
+i #sec3-info {
     display: none;
     padding: 10px;
     width: 150px;
@@ -98,7 +100,8 @@ i #sec2-info {
 }
 
 i:hover #sec1-info,
-i:hover #sec2-info {
+i:hover #sec2-info,
+i:hover #sec3-info {
     display: block;
 }
 
@@ -307,6 +310,12 @@ li:nth-child(even) {
     background-color: white;
 }
 
+li:hover{
+    cursor: pointer;
+    color: darksalmon;
+    font-weight: 700;
+}
+
 .keyboard {
     display: flex;
     font-size: 0.6rem;
@@ -490,7 +499,8 @@ h2{
 @media (hover:none) {
 
     i:active #sec1-info,
-    i:active #sec2-info {
+    i:active #sec2-info, 
+    i:active #sec3-info {
         display: block;
     }
 }

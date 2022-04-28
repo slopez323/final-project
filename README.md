@@ -14,3 +14,7 @@ This app helps users guess the word on [Wordle](https://www.nytimes.com/games/wo
 
 * **Step 3**\
   &nbsp;Click on SUBMIT to generate the list of remaining possible words.
+
+* **Step 4**\
+  <img src="list-gif.gif" height="100px" />\
+  &nbsp;You may click on a word from the list to automatically fill in your next guessed word.
