@@ -1,6 +1,6 @@
 # Overview
 
-This app helps users guess the word on [Wordle](https://www.nytimes.com/games/wordle/index.html) by displaying the remaining possible words given the results of your guesses so far.
+This app helps users guess the word on [Wordle](https://www.nytimes.com/games/wordle/index.html) by displaying the remaining possible words given the results of the guesses made so far.
 
 ## How to Use
 
