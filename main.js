@@ -188,7 +188,7 @@ function checkInputs() {
                 } else if (greenArr.some(item => item.position == position)) {
                     continue;
                 } else {
-                    greenArr.push({ 'letter': letter.textContent.toLowerCase(), position });
+                    greenArr.push({ 'letter': letter.textContent.toLowerCase(), position, 'guess': ($(letter).closest('.guess'))[0].classList[1] });
                 };
             };
             if ($(letter).hasClass('yellow')) {
@@ -197,7 +197,7 @@ function checkInputs() {
                 if (yellowArr.some(item => item.position == position && item.letter == letter.textContent.toLowerCase())) {
                     continue;
                 } else {
-                    yellowArr.push({ 'letter': letter.textContent.toLowerCase(), position });
+                    yellowArr.push({ 'letter': letter.textContent.toLowerCase(), position, position, 'guess': ($(letter).closest('.guess'))[0].classList[1] });
                 };
             };
             if ($(letter).hasClass('gray')) {
@@ -226,9 +226,16 @@ async function getWords() {
     for (item of yellowArr) {
         let position = item.position;
         position = Number(position.substring(position.length - 1));
+        let greenLetters = greenArr.map(x => x.letter);
 
         wordArr = wordArr.filter(word => word.substring(position - 1, position) != item.letter);
         wordArr = wordArr.filter(word => word.includes(item.letter));
+        if (greenLetters.includes(item.letter) && item.guess == (greenArr.find(x => x.letter == item.letter)).guess) {
+            wordArr = wordArr.filter(word => {
+                word = word.split('')
+                return word.some((letter, index) => letter == item.letter && greenArr.find(x => x.letter == item.letter && Number((x.position).substring((x.position).length - 1)) - 1 != index) != undefined);
+            });
+        };
     };
     for (item of grayArr) {
         let position = item.position;
