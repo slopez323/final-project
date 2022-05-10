@@ -203,7 +203,7 @@ function checkInputs() {
             if ($(letter).hasClass('gray')) {
                 let position = $(letter).closest('.letter');
                 position = position[0].classList[1];
-                grayArr.push({ 'letter': letter.textContent.toLowerCase(), position });
+                grayArr.push({ 'letter': letter.textContent.toLowerCase(), position, 'guess': ($(letter).closest('.guess'))[0].classList[1] });
             };
         };
     };
@@ -230,7 +230,7 @@ async function getWords() {
 
         wordArr = wordArr.filter(word => word.substring(position - 1, position) != item.letter);
         wordArr = wordArr.filter(word => word.includes(item.letter));
-        if (greenLetters.includes(item.letter) && item.guess == (greenArr.find(x => x.letter == item.letter)).guess) {
+        if (greenLetters.includes(item.letter) && greenArr.some(x => x.letter == item.letter && x.guess == item.guess)) {
             wordArr = wordArr.filter(word => {
                 word = word.split('')
                 return word.some((letter, index) => letter == item.letter && greenArr.find(x => x.letter == item.letter && Number((x.position).substring((x.position).length - 1)) - 1 != index) != undefined);
@@ -243,7 +243,19 @@ async function getWords() {
         let greenLetters = greenArr.map(x => x.letter);
         let yellowLetters = yellowArr.map(x => x.letter);
 
-        if (greenLetters.includes(item.letter) || yellowLetters.includes(item.letter)) {
+        if (greenLetters.includes(item.letter) && greenArr.some(x => x.letter == item.letter && x.guess == item.guess)) {
+            if (yellowLetters.includes(item.letter) && yellowArr.some(x => x.letter == item.letter && x.guess == item.guess)) {
+                let currentGreen = greenArr.filter(x => x.letter == item.letter && x.guess == item.guess);
+                let currentYellow = yellowArr.filter(x => x.letter == item.letter && x.guess == item.guess);
+                let letterRepeat = currentGreen.length + currentYellow.length;
+                
+                wordArr = wordArr.filter(word => word.split(`${item.letter}`).length - 1 == letterRepeat);
+                wordArr = wordArr.filter(word => word.substring(position - 1, position) != item.letter);
+            } else {
+                let letterRepeat = greenArr.filter(x => x.letter == item.letter && x.guess == item.guess).length;
+                wordArr = wordArr.filter(word => word.split(`${item.letter}`).length - 1 == letterRepeat);
+            };
+        } else if (yellowLetters.includes(item.letter)) {
             wordArr = wordArr.filter(word => word.substring(position - 1, position) != item.letter);
         } else {
             wordArr = wordArr.filter(word => !word.includes(item.letter))
