@@ -248,7 +248,7 @@ async function getWords() {
                 let currentGreen = greenArr.filter(x => x.letter == item.letter && x.guess == item.guess);
                 let currentYellow = yellowArr.filter(x => x.letter == item.letter && x.guess == item.guess);
                 let letterRepeat = currentGreen.length + currentYellow.length;
-                
+
                 wordArr = wordArr.filter(word => word.split(`${item.letter}`).length - 1 == letterRepeat);
                 wordArr = wordArr.filter(word => word.substring(position - 1, position) != item.letter);
             } else {
@@ -256,6 +256,9 @@ async function getWords() {
                 wordArr = wordArr.filter(word => word.split(`${item.letter}`).length - 1 == letterRepeat);
             };
         } else if (yellowLetters.includes(item.letter)) {
+            let letterRepeat = yellowArr.filter(x => x.letter == item.letter && x.guess == item.guess).length;
+            wordArr = wordArr.filter(word => word.split(`${item.letter}`).length - 1 == letterRepeat);
+
             wordArr = wordArr.filter(word => word.substring(position - 1, position) != item.letter);
         } else {
             wordArr = wordArr.filter(word => !word.includes(item.letter))
