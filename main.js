@@ -185,8 +185,6 @@ function checkInputs() {
                         $('#errorMsg').removeClass('show')
                     }, 800);
                     return;
-                } else if (greenArr.some(item => item.position == position)) {
-                    continue;
                 } else {
                     greenArr.push({ 'letter': letter.textContent.toLowerCase(), position, 'guess': ($(letter).closest('.guess'))[0].classList[1] });
                 };
