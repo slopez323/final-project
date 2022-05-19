@@ -44,8 +44,12 @@ function enableGuessRows() {
 // if user clicks on an input box, switch focus to that box
 $('.input').on('click', function (e) {
     if (!$(e.target).closest('.guess').hasClass('disabled')) {
-        $('.input').removeClass('currentBox');
-        $(this).addClass('currentBox');
+        if ($(this).hasClass('currentBox')) {
+            changeColor(e);
+        } else {
+            $('.input').removeClass('currentBox');
+            $(this).addClass('currentBox');
+        };
     };
 });
 
@@ -75,6 +79,10 @@ $('.key').on('click', function (e) {
 
 // switch between gray, green and yellow when clicking on color button for each letter box
 $('.color-select').on('click', function (e) {
+    changeColor(e)
+});
+
+function changeColor(e) {
     if (!$(e.target).closest('.guess').hasClass('disabled')) {
         let guess = $(e.target).closest('.guess');
         guess = guess[0].classList[1];
@@ -92,7 +100,7 @@ $('.color-select').on('click', function (e) {
             $(inputBox).addClass('gray').removeClass('yellow');
         };
     };
-});
+};
 
 // move focus to next box after input
 function nextBox() {
