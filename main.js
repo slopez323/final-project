@@ -92,6 +92,9 @@ function changeColor(e) {
 
         let inputBox = $(`.${guess}>.${letter} .input`);
 
+        $('.input').removeClass('currentBox');
+        $(inputBox).addClass('currentBox');
+
         if ($(inputBox).hasClass('gray')) {
             $(inputBox).addClass('green').removeClass('gray');
         } else if ($(inputBox).hasClass('green')) {
